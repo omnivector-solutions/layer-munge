@@ -1,0 +1,4 @@
+includes:
+  - 'layer:basic'
+  - 'interface:munge-auth'
+repo: 'https://github.com/dshcherb/layer-munge.git'

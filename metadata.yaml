@@ -1,0 +1,21 @@
+name: munge
+summary: A layer responsible for munge key handling
+maintainer:
+  - Dmitrii Shcherbakov <dmitrii.shcherbakov@canonical.com>
+description: |
+  A layer for using a pre-configured munge key, generating munge key
+  if not provided or handling one provided via a relation. Also used
+  to provide a munge key if a charm using this layer acts as a provider
+  in conjunction with munge interface.
+tags:
+  - slurm
+  - munge
+series:
+  - bionic
+  - xenial
+provides:
+  munge-provider:
+    interface: munge-auth
+requires:
+  munge-consumer:
+    interface: munge-auth
