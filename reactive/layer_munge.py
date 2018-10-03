@@ -74,5 +74,6 @@ def restart_on_munge_change():
 @reactive.when_not('munge.exposed')
 def provide_munge_key(munge_provider):
     '''Provide munge key if any consumers are related and if '''
-    munge_provider.expose_munge_key()
+    munge_key = leadership.leader_get('munge_key')
+    munge_provider.expose_munge_key(munge_key)
     flags.set_flag('munge.exposed')
