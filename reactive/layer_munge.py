@@ -44,7 +44,7 @@ def consume_munge_key(munge_consumer):
     '''consume a munge key if a relation to a provider has been made
     via a consumer interface regardless of whether it has been generated
     or not. Store it in leader settings to propagate to other units.'''
-    munge_key = munge_consumer.munge_key()
+    munge_key = munge_consumer.munge_key
     # do not do anything unless there is actually a key available
     # otherwise, keep using whatever was there before
     if munge_key:
@@ -74,5 +74,6 @@ def restart_on_munge_change():
 @reactive.when_not('munge.exposed')
 def provide_munge_key(munge_provider):
     '''Provide munge key if any consumers are related and if '''
-    munge_provider.expose_munge_key()
+    munge_key = leadership.leader_get('munge_key')
+    munge_provider.expose_munge_key(munge_key)
     flags.set_flag('munge.exposed')
