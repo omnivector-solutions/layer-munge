@@ -68,11 +68,13 @@ def consume_munge_key(munge_consumer):
     '''consume a munge key if a relation to a provider has been made
     via a consumer interface regardless of whether it has been generated
     or not. Store it in leader settings to propagate to other units.'''
+    flags.clear_flag('munge.configured')
     munge_key = munge_consumer.munge_key
     # do not do anything unless there is actually a key available
     # otherwise, keep using whatever was there before
     if munge_key:
         leadership.leader_set(munge_key=munge_key)
+        flags.set_flag('munge.changed_key_file')
     flags.clear_flag('endpoint.munge-consumer.munge_key_updated')
 
 
