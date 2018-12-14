@@ -1,7 +1,6 @@
 name: munge
 summary: A layer responsible for munge key handling
-maintainer:
-  - Dmitrii Shcherbakov <dmitrii.shcherbakov@canonical.com>
+maintainer: Dmitrii Shcherbakov <dmitrii.shcherbakov@canonical.com>
 description: |
   A layer for using a pre-configured munge key, generating munge key
   if not provided or handling one provided via a relation. Also used
